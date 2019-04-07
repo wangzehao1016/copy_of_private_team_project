@@ -1,0 +1,10 @@
+<!-- Template for manage module -->
+{% block title %}Manage Module{% endblock %}
+
+{% block content %}
+	<ul>
+		{% for module in module_list %}
+			<a href="{% url 'showComponent' module.pk %}">{{module.title}}</a>
+		{% endfor %}
+	</ul>
+{% endblock %}

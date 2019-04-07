@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!-- course, course_id, module, module_id, all_quizzes -->
+<head>
+  <title>All Available Quizzes</title>
+</head>
+<body>
+  <h2>Select a quiz for module {{module.title}}</h2>
+
+  {% for quiz in all_quizzes %}
+    <li>
+      <h4>{{quiz.title}}</h4><br>
+      <a href="/system/manage/{{instructor_id}}/{{course_id}}/{{module_id}}/addQuiz/{{quiz.id}}/">Add this quiz to current module</a>
+
+    </li>
+  {% endfor %}
+
+</body>

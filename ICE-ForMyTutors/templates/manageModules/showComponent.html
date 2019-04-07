@@ -1,0 +1,15 @@
+{% extends 'title.html' %}
+
+{% block content %}
+	<p>Choose a component to add to module: {{module.title}}</p>
+	{{no_component}}
+	{% if len_component == 0 %}
+		<p>No component is available currently!</p>
+	{% else %}
+		{% for component in components %}
+			<a href="{% url 'append_component' instructor.pk course.pk module.pk component.pk %}">{{component.title}}</a>
+		{% endfor %}
+	{% endif %}
+
+	<a href="{% url 'displayModuleContent' instructor.pk course.pk module.pk %}">Back</a>
+{% endblock %}

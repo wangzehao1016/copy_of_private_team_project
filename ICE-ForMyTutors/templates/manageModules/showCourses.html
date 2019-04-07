@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<h1>Your Course List</h1>
+	<link rel="stylesheet" type="text/css" href="style_show_c.html">
+</head>
+
+<body>
+	{% if type == "instructor" %}
+		<ul>
+		{% for course in course_list %}
+			<li><a href="{{course.id}}/">{{course}}</a></li>
+		</ul>
+		{% endfor %}
+		<button>Create Course</button>
+	{% endif %}
+</body>
+</html>

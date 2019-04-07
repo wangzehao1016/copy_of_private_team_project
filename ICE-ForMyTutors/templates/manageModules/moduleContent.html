@@ -1,0 +1,53 @@
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="/static/Drag_Drop_Ordering.js"></script>
+	<style type="text/css">
+		.drag {
+	        width: 100%;
+	        height: 40px;
+	        border: 1px solid #999;
+	        background: #EA6E59;
+	        margin-top: 2px;
+	        border-radius: 10px;
+	        padding-left: 10px;
+	        color: white;
+	        cursor: move;
+	    }
+	</style>
+
+</head>
+
+{% extends 'title.html' %}
+{% block content %}
+	{% if len_component > 0 %}
+	<ul id="container">
+		{% for component in components %}
+			<li draggable="true" class="drag" id="{{component.pk}}">
+				<span>{{component.title}}:</span>
+				{% if component.istext %}
+					<span>{{component.content}}</span>
+				{% elif component.isimage %}
+					<span>{{component.path}}</span>
+				{% endif %}
+				<a href="{% url 'removeComponentFromModule' instructor.pk course.pk module.pk component.pk %}">remove</a>
+			</li>
+		{% endfor %}
+	</ul>
+	{% else %}
+		<p>No component has been added to this module yet!</p>
+	{% endif %}
+	{% if len_quiz > 0 %}
+		<li>{{quiz}}
+			<a href="/system/manage/{{instructor.id}}/{{course.id}}/{{module.id}}/{{quiz.id}}/removeQuiz/">Remove Quiz</a><br>
+		</li>
+	{% else %}
+		<p>No quiz has been added to this module yet!</p>
+		<a href="/system/manage/{{instructor.id}}/{{course.id}}/{{module.id}}/selectQuiz/">Add a Quiz</a><br>
+	{% endif %}
+
+<a href="{% url 'saveOrder' instructor.pk course.pk module.pk 'neworder' %}" hidden id="save"></a>
+
+<a href="{% url 'display_available_components' instructor.pk course.pk module.pk %}">Add a component</a><br>
+<button id="btn" onclick="neworder()">save order</button><br>
+<a href="{% url 'showModules' instructor.pk course.pk %}">Back</a>
+{% endblock%}

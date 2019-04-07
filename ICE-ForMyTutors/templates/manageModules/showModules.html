@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<title>Course Content</title>
+</head>
+<body>
+	<ul>
+		{% if type == "instructor" %}
+    	{% for module in modules %}
+        <li><a href="/system/manage/{{u_id}}/{{course.id}}/{{module.id}}/displayModuleContent/">{{ module.title }}</a></li>
+
+					<a href="/system/manage/{{u_id}}/{{course.id}}/{{module.id}}/deleteModule/"> remove </a>
+
+    	{% endfor %}
+			<button><a href="/system/manage/{{u_id}}/{{course.id}}/requestAdd/">Add Module</a></button>
+		{% else %}
+		<p>Learner</p>
+		{% endif %}
+	</ul>
+</body>
+</html>

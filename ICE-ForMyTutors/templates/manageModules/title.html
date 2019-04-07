@@ -1,0 +1,15 @@
+{% if course %}
+	<h1>{{course.title}}</h1>
+{% endif %}
+{% if module %}
+	<h2>{{module.title}}</h2>
+{% endif %}
+{% if component %}
+	<h2>{{component.title}}</h2>
+{% endif %}
+{% if instructor %}
+	<h2>By: {{instructor}}</h2>
+{% endif %}
+
+{% block content %}
+{% endblock %}

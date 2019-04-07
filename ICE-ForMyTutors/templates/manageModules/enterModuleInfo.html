@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<!-- i_id, c_id, order -->
+<html>
+<head>
+  <title>
+    enter module information
+  </title>
+</head>
+<body>
+  <form method="GET" action="/system/manage/{{i_id}}/{{c_id}}/add/">
+    Module Title: <input type="text" name="title"></input><br>
+    <input type="hidden" name="order" value="{{order}}">
+    <input type="hidden" name="c_id" value="{{c_id}}">
+    <input type="hidden" name="i_id" value="{{i_id}}">
+    <input type="submit">
+  </form>
+</body>
+</html>
